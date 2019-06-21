@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <script src="/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="/Scripts/jquery.dataTables.min.js"></script>
+    <link href="/Content/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="/Content/Site.css" rel="stylesheet" />
+    <script src="/Content/Chart.min.js"></script>
+    <script src="/Scripts/Views/ControlActions.js"></script>
+
+
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+    <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content/css/resume.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+            <span class="d-block d-lg-none">Customer APP</span>
+            <span class="d-none d-lg-block">
+                @*<img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/Yamato-logo-circular.jpg" alt="">*@
+            </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                    @Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link js-scroll-trigger" })
+
+                </li>
+
+
+                <li class="nav-item">
+                    @Html.ActionLink("Query Customers", "Customers", "Home", new { @class = "nav-link" })
+                </li>
+
+                @*<li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#">3</a>
+                </li>*@
+
+                @*<li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#">4</a>
+                    </li>*@
+
+            </ul>
+        </div>
+    </nav>
+    @RenderBody()
+
+
+
+    <!-- Bootstrap core JavaScript -->
+  
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+
+    <script src="~/Scripts/resume.min.js"></script>
+
+</body>
+</html>

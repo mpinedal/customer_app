@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CustomersModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBL_CONTACTMETHODS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="OWNER_ID" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="TYPE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VALUE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="INDPUBLICIDAD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_CUSTOMERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LAST_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DATE_OF_BIRTH" Type="date" Nullable="false" />
+          <Property Name="SEX" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="STATE" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DIRECTIONS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OWNER_ID" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="PROVINCE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CANTON" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DISTRITO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DETAILS" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TYPE" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_MESSAGES">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__TBL_DIREC__OWNER__75A278F5">
+          <End Role="TBL_CUSTOMERS" Type="Self.TBL_CUSTOMERS" Multiplicity="1" />
+          <End Role="TBL_DIRECTIONS" Type="Self.TBL_DIRECTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CUSTOMERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBL_DIRECTIONS">
+              <PropertyRef Name="OWNER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_CONTACTMETHODS_TBL_CUSTOMERS">
+          <End Role="TBL_CUSTOMERS" Type="Self.TBL_CUSTOMERS" Multiplicity="1" />
+          <End Role="TBL_CONTACTMETHODS" Type="Self.TBL_CONTACTMETHODS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CUSTOMERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBL_CONTACTMETHODS">
+              <PropertyRef Name="OWNER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CustomersModelStoreContainer">
+          <EntitySet Name="TBL_CONTACTMETHODS" EntityType="Self.TBL_CONTACTMETHODS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_CUSTOMERS" EntityType="Self.TBL_CUSTOMERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DIRECTIONS" EntityType="Self.TBL_DIRECTIONS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_MESSAGES" EntityType="Self.TBL_MESSAGES" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__TBL_DIREC__OWNER__75A278F5" Association="Self.FK__TBL_DIREC__OWNER__75A278F5">
+            <End Role="TBL_CUSTOMERS" EntitySet="TBL_CUSTOMERS" />
+            <End Role="TBL_DIRECTIONS" EntitySet="TBL_DIRECTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_CONTACTMETHODS_TBL_CUSTOMERS" Association="Self.FK_TBL_CONTACTMETHODS_TBL_CUSTOMERS">
+            <End Role="TBL_CUSTOMERS" EntitySet="TBL_CUSTOMERS" />
+            <End Role="TBL_CONTACTMETHODS" EntitySet="TBL_CONTACTMETHODS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CustomersModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBL_CUSTOMERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LAST_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DATE_OF_BIRTH" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SEX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="STATE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TBL_DIRECTIONS" Relationship="Self.FK__TBL_DIREC__OWNER__75A278F5" FromRole="TBL_CUSTOMERS" ToRole="TBL_DIRECTIONS" />
+          <NavigationProperty Name="TBL_CONTACTMETHODS" Relationship="CustomersModel.FK_TBL_CONTACTMETHODS_TBL_CUSTOMERS" FromRole="TBL_CUSTOMERS" ToRole="TBL_CONTACTMETHODS" />
+        </EntityType>
+        <EntityType Name="TBL_DIRECTIONS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OWNER_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PROVINCE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CANTON" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DISTRITO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DETAILS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TBL_CUSTOMERS" Relationship="Self.FK__TBL_DIREC__OWNER__75A278F5" FromRole="TBL_DIRECTIONS" ToRole="TBL_CUSTOMERS" />
+        </EntityType>
+        <EntityType Name="TBL_MESSAGES">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_CONTACTMETHODS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="OWNER_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VALUE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="INDPUBLICIDAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="TBL_CUSTOMERS" Relationship="CustomersModel.FK_TBL_CONTACTMETHODS_TBL_CUSTOMERS" FromRole="TBL_CONTACTMETHODS" ToRole="TBL_CUSTOMERS" />
+        </EntityType>
+        <Association Name="FK__TBL_DIREC__OWNER__75A278F5">
+          <End Role="TBL_CUSTOMERS" Type="Self.TBL_CUSTOMERS" Multiplicity="1" />
+          <End Role="TBL_DIRECTIONS" Type="Self.TBL_DIRECTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CUSTOMERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBL_DIRECTIONS">
+              <PropertyRef Name="OWNER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CustomerModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBL_CUSTOMERS" EntityType="Self.TBL_CUSTOMERS" />
+          <EntitySet Name="TBL_DIRECTIONS" EntityType="Self.TBL_DIRECTIONS" />
+          <EntitySet Name="TBL_MESSAGES" EntityType="Self.TBL_MESSAGES" />
+          <EntitySet Name="TBL_CONTACTMETHODS" EntityType="Self.TBL_CONTACTMETHODS" />
+          <AssociationSet Name="FK__TBL_DIREC__OWNER__75A278F5" Association="Self.FK__TBL_DIREC__OWNER__75A278F5">
+            <End Role="TBL_CUSTOMERS" EntitySet="TBL_CUSTOMERS" />
+            <End Role="TBL_DIRECTIONS" EntitySet="TBL_DIRECTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_CONTACTMETHODS_TBL_CUSTOMERS" Association="CustomersModel.FK_TBL_CONTACTMETHODS_TBL_CUSTOMERS">
+            <End Role="TBL_CUSTOMERS" EntitySet="TBL_CUSTOMERS" />
+            <End Role="TBL_CONTACTMETHODS" EntitySet="TBL_CONTACTMETHODS" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_TBL_CONTACTMETHODS_TBL_CUSTOMERS">
+          <End Type="CustomersModel.TBL_CUSTOMERS" Role="TBL_CUSTOMERS" Multiplicity="1" />
+          <End Type="CustomersModel.TBL_CONTACTMETHODS" Role="TBL_CONTACTMETHODS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_CUSTOMERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBL_CONTACTMETHODS">
+              <PropertyRef Name="OWNER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CustomersModelStoreContainer" CdmEntityContainer="CustomerModel">
+          <EntitySetMapping Name="TBL_CUSTOMERS">
+            <EntityTypeMapping TypeName="CustomersModel.TBL_CUSTOMERS">
+              <MappingFragment StoreEntitySet="TBL_CUSTOMERS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="DATE_OF_BIRTH" ColumnName="DATE_OF_BIRTH" />
+                <ScalarProperty Name="SEX" ColumnName="SEX" />
+                <ScalarProperty Name="STATE" ColumnName="STATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DIRECTIONS">
+            <EntityTypeMapping TypeName="CustomersModel.TBL_DIRECTIONS">
+              <MappingFragment StoreEntitySet="TBL_DIRECTIONS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OWNER_ID" ColumnName="OWNER_ID" />
+                <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+                <ScalarProperty Name="CANTON" ColumnName="CANTON" />
+                <ScalarProperty Name="DISTRITO" ColumnName="DISTRITO" />
+                <ScalarProperty Name="DETAILS" ColumnName="DETAILS" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_MESSAGES">
+            <EntityTypeMapping TypeName="CustomersModel.TBL_MESSAGES">
+              <MappingFragment StoreEntitySet="TBL_MESSAGES">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_CONTACTMETHODS">
+            <EntityTypeMapping TypeName="CustomersModel.TBL_CONTACTMETHODS">
+              <MappingFragment StoreEntitySet="TBL_CONTACTMETHODS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OWNER_ID" ColumnName="OWNER_ID" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="INDPUBLICIDAD" ColumnName="INDPUBLICIDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,4 +1,5 @@
 ﻿using CoreApi;
+using DataAccessEF.Services;
 using Entities_POJO;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,8 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    [EnableCors(origins: "http://localhost:55384", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:55384,http://localhost:63518", headers: "*", methods: "*")]
+
     public class DirectionController : ApiController
     {
 
@@ -20,8 +22,13 @@ namespace WebAPI.Controllers
         public IHttpActionResult Get()
         {
             apiResponse = new ApiResponse();
-            var mng = new DirectionManagement();
-            apiResponse.Data = mng.RetrieveAll();
+            //var mng = new DirectionManagement();
+            //apiResponse.Data = mng.RetrieveAll();
+
+            //** EF
+            var ef = new DirectionService();
+            apiResponse.Data = ef.retrieveAll();
+
 
             return Ok(apiResponse);
         }

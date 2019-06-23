@@ -1,4 +1,5 @@
 ﻿using CoreApi;
+using DataAccessEF.Services;
 using Entities_POJO;
 using System;
 using System.Collections.Generic;
@@ -23,8 +24,15 @@ namespace WebAPI.Controllers
         {
 
             apiResp = new ApiResponse();
+
+            // ** DAO
             var mng = new CustomerManagement();
             apiResp.Data = mng.RetrieveAll();
+
+
+            //** EF
+            //var ef = new CustomerService();
+            //apiResp.Data = ef.retrieveAll();
 
             return Ok(apiResp);
         }
@@ -44,8 +52,16 @@ namespace WebAPI.Controllers
 
         public IHttpActionResult Post (Customer customer)
         {
+            //DAO
             var mng = new CustomerManagement();
             mng.Create(customer);
+
+
+            //** EF
+            //var ef = new CustomerService();
+            //ef.Create(customer);
+
+
 
             apiResp = new ApiResponse();
             apiResp.Message = "Action was excecuted...";
@@ -57,9 +73,14 @@ namespace WebAPI.Controllers
 
         public IHttpActionResult Put (Customer customer)
         {
-            var mng = new CustomerManagement();
-            mng.Update(customer);
+            //DAO
+            //var mng = new CustomerManagement();
+            //mng.Update(customer);
 
+
+            //** EF
+            var ef = new CustomerService();
+            ef.Update(customer);
             apiResp = new ApiResponse();
             apiResp.Message = "Action was excecuted";
 
@@ -68,8 +89,12 @@ namespace WebAPI.Controllers
 
         public IHttpActionResult Delete (Customer customer)
         {
-            var mng = new CustomerManagement();
-            mng.Delete(customer);
+            //var mng = new CustomerManagement();
+            //mng.Delete(customer);
+
+            //** EF
+            var ef = new CustomerService();
+            ef.Delete(customer);
 
             apiResp = new ApiResponse();
             apiResp.Message = "Action was excecuted";

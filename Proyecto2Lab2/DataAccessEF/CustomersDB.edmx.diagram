@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="434700abbd7c439c932d6b6c929a1436" Name="Diagram1">
+        <EntityTypeShape EntityType="CustomersModel.TBL_CUSTOMERS" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomersModel.TBL_DIRECTIONS" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomersModel.TBL_MESSAGES" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CustomersModel.TBL_CONTACTMETHODS" Width="1.5" PointX="3.375" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="CustomersModel.FK__TBL_DIREC__OWNER__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="CustomersModel.FK_TBL_CONTACTMETHODS_TBL_CUSTOMERS" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -67,6 +67,7 @@ namespace DataAccessEF.Services
                     result.DATE_OF_BIRTH = customer.DateOfBirth;
                     result.SEX = customer.Sex;
                     result.STATE = customer.State;
+
                     context.SaveChanges();
                 }
             }

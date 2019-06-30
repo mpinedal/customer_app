@@ -12,7 +12,11 @@ function ControlActions() {
 		var val = $('#' + tableId).attr("ColumnsDataName");
 
 		return val;
-	}
+    }
+
+
+
+
 
 	this.FillTable = function (service, tableId,refresh) {
 
@@ -33,7 +37,18 @@ function ControlActions() {
 					"url": this.GetUrlApiService(service),
 					dataSrc: 'Data'
 				},
-				"columns": arrayColumnsData
+                "columns": arrayColumnsData,
+
+                //milton: The follwing hides table when DT is initialized
+                //"columnDefs": [
+                //    {
+                //        "targets": [0],
+                //        "visible": false,
+                //        "searchable": false
+                //    }
+                //]
+                //milton
+
 			});
 		} else {
 			//RECARGA LA TABLA
@@ -49,8 +64,10 @@ function ControlActions() {
 	};
 
 	this.BindFields = function (formId, data) {
-		console.log(data);
-		$('#' + formId +' *').filter(':input').each(function (input) {
+        console.log(data);
+        $('#' + formId + ' *').each(function (input) {
+            //Original code:
+		//$('#' + formId +' *').filter(':input').each(function (input) {
 			var columnDataName = $(this).attr("ColumnDataName");
 			this.value = data[columnDataName];
 		});
@@ -58,8 +75,9 @@ function ControlActions() {
 
 	this.GetDataForm = function (formId) {
 		var data = {};
-		
-		$('#' + formId + ' *').filter(':input').each(function (input) {
+		//orginal code:
+       // $('#' + formId + ' *').filter(':input').each(function (input) {
+            $('#' + formId + ' *').each(function (input) {
 			var columnDataName = $(this).attr("ColumnDataName");
 			data[columnDataName] = this.value;
 		});

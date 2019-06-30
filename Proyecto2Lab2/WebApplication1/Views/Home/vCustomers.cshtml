@@ -1,11 +1,31 @@
 ﻿@using WebApp.Helpers;
 <script src="~/Scripts/Views/vCustomers.js"></script>
+
+
+
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@*date picke code*@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+@*<script src="https://code.jquery.com/jquery-1.12.4.js"></script>*@
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $("#datepicker").datepicker({
+            changeMonth: true,
+            changeYear: true
+        });
+    });
+</script>
+@*End of date picker code*@
+
+
+
 @Html.CtrlTable(viewName: "vCustomers", id: "tblCustomers", title: "Customer List",
-    columnsTitle: "Id,Name,LastName,DateOfBirth,Sex,State", ColumnsDataName: "Id,Name,LastName,DateOfBirth,Sex,State", onSelectFunction: "BindFields", colorHeader:"red")
+    columnsTitle: "Id,Name,LastName,DateOfBirth,Sex,State", ColumnsDataName: "Id,Name,LastName,DateOfBirth,Sex,State", onSelectFunction: "BindFields", ignoreColums:"red")
 
 
 <div class="card border-secondary" style="margin-top: 50px;">
@@ -27,7 +47,11 @@
                         @Html.CtrlInput(id: "txtId", type: "text", label: "Id", columnDataName: "Id")
                         @Html.CtrlInput(id: "txtName", type: "text", label: "Name", columnDataName: "Name")
                         @Html.CtrlInput(id: "txtLastName", type: "text", label: "LastName", columnDataName: "LastName")
-                        @Html.CtrlInput(id: "txtDateOfBirth", type: "date", label: "Date of birth", columnDataName: "DateOfBirth")
+                        @*@Html.CtrlInput(id: "txtDateOfBirth", type: "date", label: "Date of birth", columnDataName: "DateOfBirth")*@
+                        <div class="form-group">
+                            <label for="datepicker">Date of birth</label><br>
+                            <input columnDataName="DateOfBirth" type="text" id="datepicker" class="form-control">
+                        </div>
                         @Html.CtrlInput(id: "txtSex", type: "text", label: "Sex", columnDataName: "Sex")
                         @Html.CtrlInput(id: "txtState", type: "text", label: "State", columnDataName: "State")
                         @* @Html.CtrlDropDown(id: "drpGender", label: "Gender", listId: "LST_GENERO")*@

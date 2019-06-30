@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Entities_POJO;
-using DataAcess.Mapper;
-using DataAcess.Dao;
-using DataAcess.Crud;
+
 using DataAccess.Mapper;
+using DataAccess.Dao;
 
 namespace DataAccess.Crud
 {

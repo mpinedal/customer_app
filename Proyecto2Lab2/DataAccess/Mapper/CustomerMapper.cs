@@ -1,8 +1,8 @@
-﻿using DataAcess.Dao;
+﻿using DataAccess.Dao;
 using Entities_POJO;
 using System.Collections.Generic;
 
-namespace DataAcess.Mapper
+namespace DataAccess.Mapper
 {
     public class CustomerMapper : EntityMapper, ISqlStaments, IObjectMapper
     {
@@ -14,7 +14,7 @@ namespace DataAcess.Mapper
         private const string DB_COL_STATE = "STATE";
 
 
-        public SqlOperation GetCreateStatement(BaseEntity entity)
+        public Dao.SqlOperation GetCreateStatement(BaseEntity entity)
         {
             var operation = new SqlOperation { ProcedureName = "CRE_CUSTOMER_PR" };
 

@@ -1,4 +1,5 @@
-﻿using DataAcess.Crud;
+﻿using DataAccess.Crud;
+
 using Entities_POJO;
 using Exceptions;
 using System;
@@ -30,7 +31,7 @@ namespace CoreApi
                     Console.WriteLine("Cutomer already exists");
                 }
 
-                if(customer.Sex.Equals('m') || customer.Sex.Equals('f'))
+                if (customer.Sex.ToLower().Equals("m") || customer.Sex.ToLower().Equals("f"))
                 {
                     crudCustomer.Create(customer);
 
@@ -45,7 +46,7 @@ namespace CoreApi
             {
                 ExceptionManager.GetInstance().Process(ex);
             }
-            crudCustomer.Create(customer);
+            //crudCustomer.Create(customer);
 
         }
 

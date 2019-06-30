@@ -7,12 +7,16 @@
 
 @using WebApp.Helpers;
 <script src="~/Scripts/Views/Directions.js"></script>
+
+
+
+
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @Html.CtrlTable(viewName: "Directions", id: "tblDirections", title: "Direction List",
-    columnsTitle: "OwnerId,Province,Canton,Distrito,Details,Type", ColumnsDataName: "OwnerId,Province,Canton,Distrito,Details,Type", onSelectFunction: "BindFields", colorHeader:"red")
+    columnsTitle: "ID,OwnerId,Province,Canton,Distrito,Details,Type", ColumnsDataName: "ID,OwnerId,Province,Canton,Distrito,Details,Type", onSelectFunction: "BindFields", ignoreColums: "OwnerId")
 
 
 <div class="card border-secondary" style="margin-top: 50px;">
@@ -31,13 +35,20 @@
             <div class="col-lg-6">
                 <div class="bs-component">
                     <form id="frmEdition">
+                        @Html.CtrlInput(id: "txtID", type: "text", label: "ID", columnDataName: "ID")
                         @Html.CtrlInput(id: "txtOwnerId", type: "text", label: "Owner ID", columnDataName: "OwnerId")
-                        @Html.CtrlInput(id: "txtProvince", type: "text", label: "Province", columnDataName: "Province")
+                        @*@Html.CtrlInput(id: "txtProvince", type: "text", label: "Province", columnDataName: "Province")*@
+                        @Html.CtrlDropDown(id: "drpProvince", label: "Province", listId: "ProvinceList", columnDataName: "Province")
                         @Html.CtrlInput(id: "txtCanton", type: "text", label: "Canton", columnDataName: "Canton")
                         @Html.CtrlInput(id: "txtDistrito", type: "text", label: "Distrito", columnDataName: "Distrito")
                         @Html.CtrlInput(id: "txtDetails", type: "text", label: "Details", columnDataName: "Details")
                         @Html.CtrlInput(id: "txtType", type: "text", label: "Type", columnDataName: "Type")
-                        @* @Html.CtrlDropDown(id: "drpGender", label: "Gender", listId: "LST_GENERO")*@
+
+
+
+                        
+
+
                     </form>
                 </div>
             </div>

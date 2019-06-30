@@ -1,4 +1,5 @@
 ﻿using CoreApi;
+using DataAccessEF.Services;
 using Entities_POJO;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ using WebAPI.Models;
 namespace WebAPI.Controllers
 {
 
-    [EnableCors(origins: "http://localhost:55384", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:55384,http://localhost:63518", headers: "*", methods: "*")]
 
     public class ContactMethodController : ApiController
     {
@@ -24,8 +25,13 @@ namespace WebAPI.Controllers
 
         public IHttpActionResult Get()
         {
-            var mng = new ContactMethodManagement();
-            apiResponse.Data = mng.RetrieveAll();
+            //dao
+            //var mng = new ContactMethodManagement();
+            //apiResponse.Data = mng.RetrieveAll();
+
+            //ef
+            var ef = new ContactMethodService();
+            apiResponse.Data = ef.retrieveAll();
 
             return Ok(apiResponse);
         }
@@ -45,8 +51,13 @@ namespace WebAPI.Controllers
 
         public IHttpActionResult Post (ContactMethod contactMethod)
         {
-            var mng = new ContactMethodManagement();
-            mng.Create(contactMethod);
+            //var mng = new ContactMethodManagement();
+            //mng.Create(contactMethod);
+
+
+            //EF
+            var ef = new ContactMethodService();
+            ef.Create(contactMethod);
 
             apiResponse.Message = "Action was excecuted!";
             return Ok(apiResponse);
@@ -54,19 +65,29 @@ namespace WebAPI.Controllers
 
         public IHttpActionResult Put(ContactMethod contactMethod)
         {
+            //dao
             var mng = new ContactMethodManagement();
             mng.Update(contactMethod);
+
+            //EF
+            //var ef = new ContactMethodService();
+            //ef.Update(contactMethod);
 
             apiResponse.Message = "Action was excecuted!";
             return Ok(apiResponse);
         }
 
-        public IHttpActionResult Delete(ContactMethod contactMehtod)
+        public IHttpActionResult Delete(ContactMethod contactMethod)
         {
+            //Dao
             var mng = new ContactMethodManagement();
-            mng.Delete(contactMehtod);
+            mng.Delete(contactMethod);
 
-            apiResponse.Message = "Action was excecute";
+            //EF
+            //var ef = new ContactMethodService();
+            //ef.Delete(contactMethod);
+
+            apiResponse.Message = "Action was excecuted...";
             return Ok(apiResponse);
         }
 

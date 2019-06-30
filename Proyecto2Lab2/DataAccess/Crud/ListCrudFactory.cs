@@ -1,30 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using Entities_POJO;
-
+﻿using DataAccess.Dao;
 using DataAccess.Mapper;
-using DataAccess.Dao;
+using Entities_POJO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DataAccess.Crud
 {
-    public class CustomerCrudFactory : CrudFactory
+    public class ListCrudFactory : CrudFactory
     {
-        CustomerMapper mapper;
+        ListMapper mapper;
 
-        public CustomerCrudFactory() : base()
+
+        public ListCrudFactory() : base()
         {
-            mapper = new CustomerMapper();
+            mapper = new ListMapper();
             dao = SqlDao.GetInstance();
         }
 
+
         public override void Create(BaseEntity entity)
         {
-            var customer = (Customer)entity;
-            var sqlOperation = mapper.GetCreateStatement(customer);
+            var optionList = (OptionList)entity;
+            var sqlOperation = mapper.GetCreateStatement(optionList);
             dao.ExecuteProcedure(sqlOperation);
         }
 
-
+        public override void Delete(BaseEntity entity)
+        {
+            var optionList = (OptionList)entity;
+            dao.ExecuteProcedure(mapper.GetDeleteStatement(optionList));
+        }
 
         public override T Retrieve<T>(BaseEntity entity)
         {
@@ -42,7 +50,7 @@ namespace DataAccess.Crud
 
         public override List<T> RetrieveAll<T>()
         {
-            var lstCustomers = new List<T>();
+            var optionList = new List<T>();
 
             var lstResult = dao.ExecuteQueryProcedure(mapper.GetRetriveAllStatement());
             var dic = new Dictionary<string, object>();
@@ -51,23 +59,17 @@ namespace DataAccess.Crud
                 var objs = mapper.BuildObjects(lstResult);
                 foreach (var c in objs)
                 {
-                    lstCustomers.Add((T)Convert.ChangeType(c, typeof(T)));
+                    optionList.Add((T)Convert.ChangeType(c, typeof(T)));
                 }
             }
 
-            return lstCustomers;
+            return optionList;
         }
 
         public override void Update(BaseEntity entity)
         {
-            var customer = (Customer)entity;
-            dao.ExecuteProcedure(mapper.GetUpdateStatement(customer));
-        }
-
-        public override void Delete(BaseEntity entity)
-        {
-            var customer = (Customer)entity;
-            dao.ExecuteProcedure(mapper.GetDeleteStatement(customer));
+            var optionList = (OptionList)entity;
+            dao.ExecuteProcedure(mapper.GetUpdateStatement(optionList));
         }
     }
 }

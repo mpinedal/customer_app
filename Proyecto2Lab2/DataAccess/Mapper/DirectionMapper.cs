@@ -1,5 +1,6 @@
-﻿using DataAcess.Dao;
-using DataAcess.Mapper;
+﻿using DataAccess.Dao;
+
+
 using Entities_POJO;
 using System.Collections.Generic;
 
@@ -14,6 +15,7 @@ namespace DataAccess.Mapper
         private const string DB_COL_DETAILS = "DETAILS";
         private const string DB_COL_TYPE = "TYPE";
         private const string DB_COL_OWNER_ID = "OWNER_ID";
+        private const string DB_COL_ID = "ID";
 
 
         public SqlOperation GetCreateStatement(BaseEntity entity)
@@ -60,6 +62,7 @@ namespace DataAccess.Mapper
             operation.AddVarcharParam(DB_COL_DETAILS, d.Details);
             operation.AddVarcharParam(DB_COL_TYPE, d.Type);
             operation.AddVarcharParam(DB_COL_OWNER_ID, d.OwnerId);
+            operation.AddIntParam(DB_COL_ID, d.ID);
 
             return operation;
         }
@@ -70,7 +73,7 @@ namespace DataAccess.Mapper
             var operation = new SqlOperation { ProcedureName = "DEL_DIRECTION_PR" };
 
             var d = (Direction)entity;
-            operation.AddVarcharParam(DB_COL_OWNER_ID, d.OwnerId);
+            operation.AddIntParam(DB_COL_ID, d.ID);
             return operation;
         }
 
@@ -92,12 +95,15 @@ namespace DataAccess.Mapper
         {
             var direction = new Direction
             {
+                ID = GetIntValue(row, DB_COL_ID),
                 Province = GetStringValue(row, DB_COL_PROVINCE),
                 Canton = GetStringValue(row, DB_COL_CANTON),
                 Distrito = GetStringValue(row, DB_COL_DISTRITO),
                 Details = GetStringValue(row, DB_COL_DETAILS),
                 Type = GetStringValue(row, DB_COL_TYPE),
                 OwnerId = GetStringValue(row, DB_COL_OWNER_ID)
+                
+
 
            
 

@@ -22,12 +22,12 @@ namespace WebAPI.Controllers
         public IHttpActionResult Get()
         {
             apiResponse = new ApiResponse();
-            //var mng = new DirectionManagement();
-            //apiResponse.Data = mng.RetrieveAll();
+            var mng = new DirectionManagement();
+            apiResponse.Data = mng.RetrieveAll();
 
             //** EF
-            var ef = new DirectionService();
-            apiResponse.Data = ef.retrieveAll();
+            // var ef = new DirectionService();
+            // apiResponse.Data = ef.retrieveAll();
 
 
             return Ok(apiResponse);
@@ -51,8 +51,14 @@ namespace WebAPI.Controllers
 
         public IHttpActionResult Post (Direction direction)
         {
-            var mng = new DirectionManagement();
-            mng.Create(direction);
+
+            //dao
+            //var mng = new DirectionManagement();
+            //mng.Create(direction);
+
+            //EF
+            var ef = new DirectionService();
+            ef.Create(direction);
 
             apiResponse.Message = "Action excecuted....";
             return Ok(apiResponse);
@@ -60,8 +66,13 @@ namespace WebAPI.Controllers
 
         public IHttpActionResult Put (Direction direction)
         {
-            var mng = new DirectionManagement();
-            mng.Update(direction);
+            //Dao
+            //var mng = new DirectionManagement();
+            //mng.Update(direction);
+
+            //EF
+            var ef = new DirectionService();
+            ef.Update(direction);
 
             apiResponse.Message = "Action excecuted....";
             return Ok(apiResponse);
@@ -69,8 +80,14 @@ namespace WebAPI.Controllers
 
         public IHttpActionResult Delete (Direction direction)
         {
+            //dao
             var mng = new DirectionManagement();
             mng.Delete(direction);
+
+            //EF
+            //var ef = new DirectionService();
+            //ef.Delete(direction);
+
 
             apiResponse.Message = "Action excecuted...";
             return Ok(apiResponse);

@@ -1,6 +1,7 @@
 ﻿using CoreApi;
 using DataAccessEF.Services;
 using Entities_POJO;
+using Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,13 +27,13 @@ namespace WebAPI.Controllers
             apiResp = new ApiResponse();
 
             // ** DAO
-            var mng = new CustomerManagement();
-            apiResp.Data = mng.RetrieveAll();
+            //var mng = new CustomerManagement();
+            //apiResp.Data = mng.RetrieveAll();
 
 
             //** EF
-            //var ef = new CustomerService();
-            //apiResp.Data = ef.retrieveAll();
+            var ef = new CustomerService();
+            apiResp.Data = ef.retrieveAll();
 
             return Ok(apiResp);
         }
@@ -50,24 +51,33 @@ namespace WebAPI.Controllers
                 return Ok(apiResp);
         }
 
-        public IHttpActionResult Post (Customer customer)
+        public IHttpActionResult Post(Customer customer)
         {
-            //DAO
-            var mng = new CustomerManagement();
-            mng.Create(customer);
+
+            try {
+                //DAO
+                var mng = new CustomerManagement();
+                mng.Create(customer);
 
 
-            //** EF
-            //var ef = new CustomerService();
-            //ef.Create(customer);
+                //** EF
+                //var ef = new CustomerService();
+                //ef.Create(customer);
 
 
 
-            apiResp = new ApiResponse();
-            apiResp.Message = "Action was excecuted...";
+                apiResp = new ApiResponse();
+                apiResp.Message = "Action was excecuted...";
 
-            return Ok(apiResp);
+                return Ok(apiResp);
 
+
+            }
+            catch (BusinessException bex)
+            {
+                return InternalServerError(new Exception(bex.ExceptionId + "-"
+                    + bex.AppMessage.Message));
+            }
 
         }
 
@@ -89,6 +99,7 @@ namespace WebAPI.Controllers
 
         public IHttpActionResult Delete (Customer customer)
         {
+            //
             //var mng = new CustomerManagement();
             //mng.Delete(customer);
 

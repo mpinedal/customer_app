@@ -15,6 +15,7 @@ namespace Entities_POJO
         public string Details { get; set; }
         public string Type { get; set; }
         public string OwnerId { get; set; }
+        public int ID { get; set; }
 
 
         public Direction()

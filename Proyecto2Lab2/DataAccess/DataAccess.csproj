@@ -59,18 +59,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Crud\AppMessagesCrudFactory.cs" />
     <Compile Include="Crud\ContactMehodCrudFactory.cs" />
     <Compile Include="Crud\CrudFactory.cs" />
     <Compile Include="Crud\CustomerCrudFactory.cs" />
     <Compile Include="Crud\DirectionCrudFactory.cs" />
+    <Compile Include="Crud\ListCrudFactory.cs" />
     <Compile Include="Dao\SqlDao.cs" />
     <Compile Include="Dao\SqlOperation.cs" />
+    <Compile Include="Mapper\AppMessageMapper.cs" />
     <Compile Include="Mapper\ContactMethodMapper.cs" />
     <Compile Include="Mapper\CustomerMapper.cs" />
     <Compile Include="Mapper\DirectionMapper.cs" />
     <Compile Include="Mapper\EntityMapper.cs" />
     <Compile Include="Mapper\IObjectMapper.cs" />
     <Compile Include="Mapper\ISqlStatement.cs" />
+    <Compile Include="Mapper\ListMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

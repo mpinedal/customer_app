@@ -5,7 +5,7 @@
 }
 
 @Html.CtrlTable(viewName: "ContactMethod", id: "tblContactMethod", title: "Contact Method List",
-    columnsTitle: "OwnerId,Type,Value,Description,INDPublicidad", ColumnsDataName: "OwnerId,Type,Value,Description,INDPublicidad", onSelectFunction: "BindFields", colorHeader:"red")
+    columnsTitle: "ID,OwnerId,Type,Value,Description,INDPublicidad", ColumnsDataName: "ID,OwnerId,Type,Value,Description,INDPublicidad", onSelectFunction: "BindFields", ignoreColums: "red")
 
 
 <div class="card border-secondary" style="margin-top: 50px;">
@@ -24,7 +24,8 @@
             <div class="col-lg-6">
                 <div class="bs-component">
                     <form id="frmEdition">
-                        @Html.CtrlInput(id: "txtId", type: "text", label: "Id", columnDataName: "OwnerId")
+                        @Html.CtrlInput(id: "txtID", type: "text", label: "ID", columnDataName: "ID")
+                        @Html.CtrlInput(id: "txtOwnerId", type: "text", label: "Owner Id", columnDataName: "OwnerId")
                         @Html.CtrlInput(id: "txtType", type: "text", label: "Type", columnDataName: "Type")
                         @Html.CtrlInput(id: "txtValue", type: "text", label: "Value", columnDataName: "Value")
                         @Html.CtrlInput(id: "txtDescription", type: "text", label: "Description", columnDataName: "Description")

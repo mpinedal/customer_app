@@ -14,6 +14,7 @@ namespace Entities_POJO
         public string Description { get; set; }
         public string INDPublicidad { get; set; }
         public string OwnerId { get; set; }
+        public int ID { get; set; }
 
 
         public ContactMethod()

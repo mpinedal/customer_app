@@ -66,6 +66,7 @@
       <DependentUpon>CustomersDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ContactMethodService.cs" />
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\DirectionService.cs" />
     <Compile Include="TBL_CONTACTMETHODS.cs">
@@ -82,7 +83,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="CustomersDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CustomersDB.Designer.cs</LastGenOutput>

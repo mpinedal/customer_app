@@ -36,5 +36,65 @@ namespace DataAccessEF.Services
 
         }
 
+        public void Create(Direction direction)
+        {
+            using (CustomerModel context = new CustomerModel())
+            {
+
+
+                TBL_DIRECTIONS newDirection = new TBL_DIRECTIONS
+                {
+                    PROVINCE = direction.Province,
+                    CANTON = direction.Canton,
+                    DISTRITO = direction.Distrito,
+                    DETAILS = direction.Details,
+                    TYPE = direction.Type,
+                    OWNER_ID = direction.OwnerId
+                };
+
+                context.TBL_DIRECTIONS.Add(newDirection);
+                context.SaveChanges();
+            }
+
+
+        }
+
+        public void Update(Direction direction)
+        {
+            using (CustomerModel context = new CustomerModel())
+            {
+                var result = context.TBL_DIRECTIONS.SingleOrDefault(d => d.ID == direction.ID);
+                if (result != null)
+                {
+
+                    result.PROVINCE = direction.Province;
+                    result.CANTON = direction.Canton;
+                    result.DISTRITO = direction.Distrito;
+                    result.DETAILS = direction.Details;
+                    result.TYPE = direction.Type;
+                    result.OWNER_ID = direction.OwnerId;
+
+                    context.SaveChanges();
+                }
+            }
+        }
+
+
+        public void Delete(Direction direction)
+        {
+            using (CustomerModel context = new CustomerModel())
+            {
+                var result = context.TBL_DIRECTIONS.SingleOrDefault(d => d.ID == direction.ID);
+                if (result != null)
+                {
+                    context.TBL_DIRECTIONS.Remove(result);
+                    context.SaveChanges();
+                }
+
+
+            }
+
+        }
+
     }
 }

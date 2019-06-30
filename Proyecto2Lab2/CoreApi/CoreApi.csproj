@@ -45,6 +45,7 @@
     <Compile Include="ContactMethodManagement.cs" />
     <Compile Include="CustomerManagement.cs" />
     <Compile Include="DirectionManagement.cs" />
+    <Compile Include="ListManagemnt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

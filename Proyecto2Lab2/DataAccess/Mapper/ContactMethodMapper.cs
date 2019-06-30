@@ -1,5 +1,6 @@
-﻿using DataAcess.Dao;
-using DataAcess.Mapper;
+﻿using DataAccess.Dao;
+
+using DataAccess.Mapper;
 using Entities_POJO;
 using System.Collections.Generic;
 
@@ -13,6 +14,7 @@ namespace DataAccess.Mapper
         private const string DB_COL_DESCRIPTION = "DESCRIPTION";
         private const string DB_COL_INDPUBLICIDAD = "INDPUBLICIDAD";
         private const string DB_COL_OWNER_ID = "OWNER_ID";
+        private const string DB_COL_ID = "ID";
 
 
         public SqlOperation GetCreateStatement(BaseEntity entity)
@@ -57,6 +59,7 @@ namespace DataAccess.Mapper
             operation.AddVarcharParam(DB_COL_DESCRIPTION, c.Description);
             operation.AddVarcharParam(DB_COL_INDPUBLICIDAD, c.INDPublicidad);
             operation.AddVarcharParam(DB_COL_OWNER_ID, c.OwnerId);
+            operation.AddIntParam(DB_COL_ID, c.ID);
 
             return operation;
         }
@@ -68,7 +71,7 @@ namespace DataAccess.Mapper
             var operation = new SqlOperation { ProcedureName = "DEL_CONTACTMETHOD_PR" };
 
             var c = (ContactMethod)entity;
-            operation.AddVarcharParam(DB_COL_OWNER_ID, c.OwnerId);
+            operation.AddIntParam(DB_COL_ID, c.ID);
             return operation;
         }
 
@@ -94,7 +97,8 @@ namespace DataAccess.Mapper
                 Value = GetStringValue(row, DB_COL_VALUE),
                 Description = GetStringValue(row, DB_COL_DESCRIPTION),
                 INDPublicidad = GetStringValue(row, DB_COL_INDPUBLICIDAD),
-                OwnerId = GetStringValue(row, DB_COL_OWNER_ID)
+                OwnerId = GetStringValue(row, DB_COL_OWNER_ID),
+                ID = GetIntValue(row, DB_COL_ID)
     };
 
             return contactMethod;

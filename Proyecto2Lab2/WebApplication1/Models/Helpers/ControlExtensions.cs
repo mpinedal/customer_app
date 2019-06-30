@@ -10,7 +10,7 @@ namespace WebApp.Helpers
     public static class ControlExtensions
     {
         public static HtmlString CtrlTable(this HtmlHelper html, string viewName, string id, string title,
-            string columnsTitle, string ColumnsDataName, string onSelectFunction, string colorHeader)
+            string columnsTitle, string ColumnsDataName, string onSelectFunction, string ignoreColums)
         {
             var ctrl = new CtrlTableModel
             {
@@ -69,17 +69,18 @@ namespace WebApp.Helpers
             return new HtmlString(ctrl.GetHtml());
         }
 
-        //public static HtmlString CtrlDropDown(this HtmlHelper html, string id, string label, string listId)
-        //{
-        //    var ctrl = new CtrlDropDownModel
-        //    {
-        //        Id = id,
-        //        Label = label,
-        //        ListId = listId
-        //    };
+        public static HtmlString CtrlDropDown(this HtmlHelper html, string id, string label, string listId, string columnDataName)
+        {
+            var ctrl = new CtrlDropDownModel
+            {
+                Id = id,
+                Label = label,
+                ListId = listId,
+                ColumnDataName = columnDataName
+            };
 
-        //    return new HtmlString(ctrl.GetHtml());
-        //}
+            return new HtmlString(ctrl.GetHtml());
+        }
 
     }
 }

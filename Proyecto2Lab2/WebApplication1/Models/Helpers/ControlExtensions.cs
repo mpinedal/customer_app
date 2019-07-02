@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApp.Models.Controls;
+using WebApplication1.Models.Controls;
 
 namespace WebApp.Helpers
 {
@@ -82,5 +83,18 @@ namespace WebApp.Helpers
             return new HtmlString(ctrl.GetHtml());
         }
 
+        public static HtmlString CtrlDatePickerModel(this HtmlHelper html, string id, string label, string type, string placeholder, string columnDataName)
+        {
+            var ctrl = new CtrlDatePickerModel
+            {
+                Id = id,
+                Label = label,
+                Type = type,
+                Placeholder = placeholder,
+                ColumnDataName = columnDataName
+            };
+
+            return new HtmlString(ctrl.GetHtml());
+        }
     }
 }

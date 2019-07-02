@@ -46,6 +46,7 @@
     <Compile Include="ContactMethod.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Direction.cs" />
+    <Compile Include="Email.cs" />
     <Compile Include="ObjectDumper.cs" />
     <Compile Include="OptionList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

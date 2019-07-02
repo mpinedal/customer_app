@@ -8,10 +8,13 @@
 }
 
 @*date picke code*@
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-@*<script src="https://code.jquery.com/jquery-1.12.4.js"></script>*@
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+@*<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">*@
+
+
+@*<script src="https://code.jquery.com/jquery-1.12.4.js"></script> Not used*@
+
+@*<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
     $(function () {
         $("#datepicker").datepicker({
@@ -19,7 +22,7 @@
             changeYear: true
         });
     });
-</script>
+</script>*@
 @*End of date picker code*@
 
 
@@ -48,10 +51,11 @@
                         @Html.CtrlInput(id: "txtName", type: "text", label: "Name", columnDataName: "Name")
                         @Html.CtrlInput(id: "txtLastName", type: "text", label: "LastName", columnDataName: "LastName")
                         @*@Html.CtrlInput(id: "txtDateOfBirth", type: "date", label: "Date of birth", columnDataName: "DateOfBirth")*@
-                        <div class="form-group">
+                        @*<div class="form-group">
                             <label for="datepicker">Date of birth</label><br>
                             <input columnDataName="DateOfBirth" type="text" id="datepicker" class="form-control">
-                        </div>
+                        </div>*@
+                        @Html.CtrlDatePickerModel(id: "datepicker", label: "Date of birth", type: "text",  placeholder: "Date of birth", columnDataName: "DateOfBirth")
                         @Html.CtrlInput(id: "txtSex", type: "text", label: "Sex", columnDataName: "Sex")
                         @Html.CtrlInput(id: "txtState", type: "text", label: "State", columnDataName: "State")
                         @* @Html.CtrlDropDown(id: "drpGender", label: "Gender", listId: "LST_GENERO")*@

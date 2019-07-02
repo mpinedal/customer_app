@@ -13,7 +13,8 @@
         <div class="row pull-right">
             <div class="col-md-8">Customer edition</div>
             <div class="col-md-4">
-                @Html.CtrlButton(viewName: "ContactMethod", id: "btnCreate", label: "Save", onClickFunction: "Create", buttonType: "success")
+                viewName:
+                @Html.CtrlButton("ContactMethod", id: "btnCreate", label: "Save", onClickFunction: "Create", buttonType: "success")
                 @Html.CtrlButton(viewName: "ContactMethod", id: "btnUpdate", label: "Save changes", onClickFunction: "Update", buttonType: "info")
                 @Html.CtrlButton(viewName: "ContactMethod", id: "btnDelete", label: "Delete", onClickFunction: "Delete", buttonType: "danger")
             </div>

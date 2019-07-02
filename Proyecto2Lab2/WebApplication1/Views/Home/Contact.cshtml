@@ -1,11 +1,16 @@
 ﻿@{
     ViewBag.Title = "Contact us";
 }
-
+@using WebApp.Helpers;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <link href="~/Content/Contact.css" rel="stylesheet" />
+<script src="~/Scripts/Views/ContactUs.js"></script>
 
 
-<form>
+
+<form id="frmEdition">
 
     <div class="form-group">
 
@@ -22,12 +27,17 @@
 
 
     <div class="form-group">
-        <label for="exampleFormControlTextarea1">Email content</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <label for="emailContent">Email content</label>
+        <textarea class="form-control" id="emailContent" rows="3"></textarea>
     </div>
 
 
-    <button type="submit" class="btn btn-primary">Send</button>
+    @*<button type="submit" class="btn btn-primary" id="buttonSend" onClickFunction="Create">Send</button>*@
+
+
+    @Html.CtrlButton(viewName: "Email", id: "buttonSend", label: "Send", onClickFunction: "Send", buttonType: "danger")
+
+
 
 
 </form>
